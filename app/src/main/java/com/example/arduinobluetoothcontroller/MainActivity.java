@@ -6,10 +6,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if (bluetoothAdapter == null) {
-            Toast.makeText(this, R.string.no_bluetooth_device, Toast.LENGTH_SHORT).show();
+            Toast.makeText(
+                    this,
+                    R.string.no_bluetooth_device,
+                    Toast.LENGTH_SHORT
+            ).show();
             finish();
         } else {
             if (!bluetoothAdapter.isEnabled()) {
@@ -33,9 +38,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    void listPairedDevices(View view) {
+    public void listPairedDevices(View view) {
         if (bluetoothAdapter.isEnabled()) {
-            Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
+
+            for (BluetoothDevice device : bluetoothAdapter.getBondedDevices()) {
+                Log.d("paired", device.getName());
+            }
+
+            BluetoothDeviceArrayAdapter adapter = new BluetoothDeviceArrayAdapter(
+                    this,
+                    bluetoothAdapter.getBondedDevices()
+            );
+
+            ListView pairedDevicesView = findViewById(R.id.pairedListView);
+            pairedDevicesView.setAdapter(adapter);
         }
     }
 }
