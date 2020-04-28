@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_ENABLE_BT = 1;
     BluetoothAdapter bluetoothAdapter;
+    BluetoothDevice chosenBluetoothDevice = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
             ListView pairedDevicesView = findViewById(R.id.pairedListView);
             pairedDevicesView.setAdapter(adapter);
+            pairedDevicesView.setOnItemClickListener(new PairedDeviceOnClick());
         }
     }
+
+    private class PairedDeviceOnClick implements AdapterView.OnItemClickListener {
+        public void onItemClick(AdapterView parent, View v, int position, long id) {
+            BluetoothDevice device = (BluetoothDevice) parent.getItemAtPosition(position);
+            Log.d("paired", "Device clicked: " + device.getName());
+            chosenBluetoothDevice = device;
+        }
+    }
+
 }
