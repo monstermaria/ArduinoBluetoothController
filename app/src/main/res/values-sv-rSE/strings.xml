@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ArduinoBluetoothController</string>
+    <string name="no_bluetooth_device">Bluetooth stöds inte av den här enheten</string>
+    <string name="welcome_bluetooth">Välkommen till bluetooth setup. Välj ett sätt att ansluta.</string>
+    <string name="show_paired">Visa parade enheter</string>
+    <string name="search_for_devices">Sök efter enheter</string>
+</resources>
