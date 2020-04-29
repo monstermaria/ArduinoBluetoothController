@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ArduinoBluetoothController</string>
-    <string name="no_bluetooth_device">Bluetooth is not supprted by this unit</string>
+    <string name="no_bluetooth_device">Bluetooth is not supported by this unit</string>
     <string name="welcome_bluetooth">Welcome to the bluetooth setup. Choose a way to connect.</string>
     <string name="show_paired">Show paired devices</string>
     <string name="search_for_devices">Search for devices</string>
+    <string name="instructions">Write someting in the field below to send it to the selected bluetooth device</string>
+    <string name="send_byte">Send byte</string>
 </resources>
