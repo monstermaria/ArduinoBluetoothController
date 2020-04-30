@@ -3,63 +3,43 @@ package com.example.arduinobluetoothcontroller;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 class BluetoothCommunicationThread extends Thread {
 
     private BluetoothSocket socket;
     private InputStream input;
     private OutputStream output;
-
-    private byte[] inputBytes, outputBytes;
+    private ArrayList<Integer> data = new ArrayList<>();
 
     BluetoothCommunicationThread(BluetoothSocket socket) {
-
         this.socket = socket;
-//        Log.d("communication", "connection established");
     }
 
     @Override
     public void run() {
-        Log.d("communication", "run");
 
-        if (socket.isConnected()) {
-            Log.d("communication", "socket connected");
-        } else {
-            Log.d("communication", "socket not connected");
-            try {
-                Log.d("communication", "trying to establish connection");
-                socket.connect();
-                Log.d("communication", "connection established");
-            } catch (IOException e) {
-                Log.d("communication", "connection failed");
-                e.printStackTrace();
-                return;
-            }
-        }
+        Log.d("communication", "run reader");
 
+        // get input stream
         try {
             input = socket.getInputStream();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        try {
-            output = socket.getOutputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        while (socket.isConnected()) {
+        // listen for incoming data as long as the socket is connected
+        while (socket.isConnected() && !dataReady()) {
             try {
                 if (input.available() > 0) {
-                    char data = (char) input.read();
-                    Log.d("communication", "input read: " + data);
+                    // handle data
+                    int d = input.read();
+                    data.add(d);
+                    Log.d("communication", "input read: " + d);
                 }
             } catch (IOException e) {
                 Log.d("communication", "read failed");
@@ -68,9 +48,31 @@ class BluetoothCommunicationThread extends Thread {
         }
     }
 
+    boolean dataReady() {
+        return data.size() >= 7;
+    }
+
+    ArrayList<Integer> getData() {
+        ArrayList<Integer> dataToDeliver = new ArrayList<>(data);
+        data = new ArrayList<>();
+        return dataToDeliver;
+    }
+
     void writeToOutputStream(CharSequence data) {
+
         Log.d("communication", "write");
+
+        // get output stream
+        try {
+            output = socket.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // convert from char sequence to bytes
         byte[] bytes = data.toString().getBytes(Charset.defaultCharset());
+
+        // write bytes
         try {
             Log.d("communication", "trying to write data");
             output.write(bytes);
@@ -82,7 +84,16 @@ class BluetoothCommunicationThread extends Thread {
     }
 
     void writeByteToOutputStream(byte myByte) {
+
         Log.d("communication", "write byte");
+
+        // get output stream
+        try {
+            output = socket.getOutputStream();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         byte[] bytes = {myByte};
         try {
             Log.d("communication", "trying to write byte");
@@ -97,7 +108,8 @@ class BluetoothCommunicationThread extends Thread {
 
     void cancel() {
         try {
-            socket.close();
+            input.close();
+            output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
