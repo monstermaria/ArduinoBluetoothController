@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ReadingsAndSettingsActivity">
+
+    <TextView
+        android:id="@+id/pressureView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pressure" />
+
+    <TextView
+        android:id="@+id/currentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/current" />
+
+    <TextView
+        android:id="@+id/runningView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/running_signal" />
+
+    <TextView
+        android:id="@+id/alarmView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sum_alarm" />
+
+    <TextView
+        android:id="@+id/setpointView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/setpoint" />
+
+    <EditText
+        android:id="@+id/setpointEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/startView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_signal" />
+
+    <RadioGroup
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/start" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stop" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/getReadingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getReadings"
+        android:text="@string/get_readings" />
+
+    <Button
+        android:id="@+id/sendSettingsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="writeSettings"
+        android:text="@string/send_settings" />
+
+</LinearLayout>
