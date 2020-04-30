@@ -7,57 +7,18 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/instructionsView"
+    <Button
+        android:id="@+id/showReadingsAndSettingsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/instructions" />
-
-    <EditText
-        android:id="@+id/sendText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:importantForAutofill="no"
-        android:inputType="none" />
-
-    <TextView
-        android:id="@+id/welcomeView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_bluetooth" />
+        android:onClick="openReadingsAndSettings"
+        android:text="@string/show_readings_and_settings" />
 
     <Button
-        android:id="@+id/sendByteButton"
-        android:layout_width="wrap_content"
+        android:id="@+id/bluetoothSettingsButton"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="writeByte"
-        android:text="@string/send_byte" />
-
-    <include android:id="@+id/chosenBluetoothDeviceView"
-        layout="@layout/bluetooth_device"/>
-
-    <Button
-        android:id="@+id/showPairedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="listPairedDevices"
-        android:text="@string/show_paired" />
-
-    <ListView
-        android:id="@+id/pairedListView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/search_for_devices" />
-
-    <ListView
-        android:id="@+id/foundListView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" />
+        android:onClick="openBluetoothSettings"
+        android:text="@string/bluetooth_settings" />
 
 </LinearLayout>

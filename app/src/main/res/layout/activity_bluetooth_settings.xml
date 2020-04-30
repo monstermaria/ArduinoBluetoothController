@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BluetoothSettingsActivity">
+
+    <TextView
+        android:id="@+id/welcomeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_bluetooth" />
+
+    <include android:id="@+id/chosenBluetoothDeviceView"
+        layout="@layout/bluetooth_device"/>
+
+    <Button
+        android:id="@+id/showPairedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="listPairedDevices"
+        android:text="@string/show_paired" />
+
+    <ListView
+        android:id="@+id/pairedListView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <ListView
+        android:id="@+id/foundListView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/instructionsView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/instructions" />
+
+    <EditText
+        android:id="@+id/sendText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:importantForAutofill="no"
+        android:inputType="none" />
+
+    <Button
+        android:id="@+id/sendByteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="writeByte"
+        android:text="@string/send_byte" />
+
+</LinearLayout>

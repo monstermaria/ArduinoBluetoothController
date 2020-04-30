@@ -6,4 +6,16 @@
     <string name="search_for_devices">Search for devices</string>
     <string name="instructions">Write someting in the field below to send it to the selected bluetooth device</string>
     <string name="send_byte">Send byte</string>
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="show_readings_and_settings">Show readings and settings</string>
+    <string name="send_settings">Send settings</string>
+    <string name="get_readings">Get readings</string>
+    <string name="setpoint">Setpoint</string>
+    <string name="start_signal">Start signal</string>
+    <string name="running_signal">Running signal</string>
+    <string name="sum_alarm">Sum alarm</string>
+    <string name="pressure">Pressure</string>
+    <string name="current">Current</string>
+    <string name="bluetooth_settings">Bluetooth settings</string>
 </resources>

@@ -7,4 +7,16 @@
     <string name="search_for_devices">Sök efter enheter</string>
     <string name="instructions">Skriv något i fältet nedan för att skicka det till den valda bluetooth-enheten</string>
     <string name="send_byte">Skicka byte</string>
+    <string name="start">Start</string>
+    <string name="stop">Stopp</string>
+    <string name="show_readings_and_settings">Visa avläsningar och inställningar</string>
+    <string name="send_settings">Skicka inställningar</string>
+    <string name="get_readings">Hämta avläsningar</string>
+    <string name="setpoint">Börvärde</string>
+    <string name="start_signal">Startsignal</string>
+    <string name="running_signal">Driftsvar</string>
+    <string name="sum_alarm">Summalarm</string>
+    <string name="pressure">Tryck</string>
+    <string name="current">Ström</string>
+    <string name="bluetooth_settings">Inställningar för bluetooth</string>
 </resources>
