@@ -55,17 +55,17 @@ class BluetoothCommunicationThread extends Thread {
             e.printStackTrace();
         }
 
-//        while (socket.isConnected()) {
-//            try {
-//                if (input.available() > 0) {
-//                    int data = input.read();
-//                    Log.d("communication", "input read: " + data);
-//                }
-//            } catch (IOException e) {
-//                Log.d("communication", "read failed");
-//                e.printStackTrace();
-//            }
-//        }
+        while (socket.isConnected()) {
+            try {
+                if (input.available() > 0) {
+                    char data = (char) input.read();
+                    Log.d("communication", "input read: " + data);
+                }
+            } catch (IOException e) {
+                Log.d("communication", "read failed");
+                e.printStackTrace();
+            }
+        }
     }
 
     void writeToOutputStream(CharSequence data) {
