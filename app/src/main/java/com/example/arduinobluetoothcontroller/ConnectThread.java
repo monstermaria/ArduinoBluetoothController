@@ -63,15 +63,19 @@ class ConnectThread extends Thread {
 
     // Closes the client socket and causes the thread to finish.
     void cancel() {
+        // stop the thread responsible for reading
+        if (communicationThread != null) {
+            communicationThread.interrupt();
+            communicationThread.cancel();
+        }
+
+        // close the socket
         try {
             Log.d("connect", "trying to close socket");
             mmSocket.close();
             Log.d("connect", "socket closed");
         } catch (IOException e) {
             Log.e("connect", "Could not close the client socket", e);
-        }
-        if (communicationThread != null) {
-            communicationThread.cancel();
         }
     }
 }
