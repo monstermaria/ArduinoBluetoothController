@@ -9,6 +9,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -109,6 +111,17 @@ public class ReadingsAndSettingsActivity extends AppCompatActivity {
 
     public void writeSettings(View view) {
         Log.d("writeSettings", "start writing");
+
+        // gather data to send
+        EditText setpointEditText = findViewById(R.id.setpointEditText);
+        RadioGroup start = findViewById(R.id.start);
+
+        String setpoint = setpointEditText.getText().toString();
+        Log.d("writeSettings", setpoint);
+
+        // send data
+
+        Log.d("writeSettings", "end writing");
     }
 
     void showReadings(ArrayList<Integer> data) {

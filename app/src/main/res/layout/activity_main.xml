@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/showReadingsAndSettingsButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="openReadingsAndSettings"
         android:text="@string/show_readings_and_settings" />
