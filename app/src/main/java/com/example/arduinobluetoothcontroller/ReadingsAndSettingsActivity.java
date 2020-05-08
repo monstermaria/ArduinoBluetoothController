@@ -39,6 +39,9 @@ public class ReadingsAndSettingsActivity extends AppCompatActivity {
         super.onRestart();
 
         Log.d("lifecycle", "onRestart " + this);
+
+        // update views with the current status
+        getReadings(findViewById(R.id.showReadingsAndSettingsButton));
     }
 
     @Override
@@ -116,8 +119,19 @@ public class ReadingsAndSettingsActivity extends AppCompatActivity {
         EditText setpointEditText = findViewById(R.id.setpointEditText);
         RadioGroup start = findViewById(R.id.start);
 
+        // read setpoint
         String setpoint = setpointEditText.getText().toString();
-        Log.d("writeSettings", setpoint);
+        int setp;
+
+        try {
+            setp = Integer.parseInt(setpoint);
+            Log.d("writeSettings", String.valueOf(setp));
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+
+        // read run setting
+
 
         // send data
 
@@ -134,12 +148,16 @@ public class ReadingsAndSettingsActivity extends AppCompatActivity {
         TextView startView = findViewById(R.id.startView);
 
         // set data in views
-        pressureView.setText(getString(R.string.pressure) + ": " + data.get(5));
-        currentView.setText(getString(R.string.current) + ": " + data.get(6));
-        runningView.setText(getString(R.string.running_signal) + ": " + data.get(1));
-        alarmView.setText(getString(R.string.sum_alarm) + ": " + data.get(2));
-        setpointView.setText(getString(R.string.setpoint) + ": " + data.get(4));
-        startView.setText(getString(R.string.start_signal) + ": " + data.get(3));
+        if (data.size() < 7) {
+            Log.e("showReadings", "called with too short arraylist of arguments");
+        } else {
+            pressureView.setText(getString(R.string.pressure, data.get(5)));
+            currentView.setText(getString(R.string.current, data.get(6)));
+            runningView.setText(getString(R.string.running_signal, data.get(1)));
+            alarmView.setText(getString(R.string.sum_alarm, data.get(2)));
+            setpointView.setText(getString(R.string.setpoint, data.get(4)));
+            startView.setText(getString(R.string.start_signal, data.get(3)));
+        }
     }
 
     ConnectThread getCommunicationChannel() {
