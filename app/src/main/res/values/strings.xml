@@ -11,11 +11,11 @@
     <string name="show_readings_and_settings">Show readings and settings</string>
     <string name="send_settings">Send settings</string>
     <string name="get_readings">Get readings</string>
-    <string name="setpoint">Setpoint</string>
-    <string name="start_signal">Start signal</string>
-    <string name="running_signal">Running signal</string>
-    <string name="sum_alarm">Sum alarm</string>
-    <string name="pressure">Pressure</string>
-    <string name="current">Current</string>
+    <string name="setpoint">Setpoint: %1$d</string>
+    <string name="start_signal">Start signal: %1$d</string>
+    <string name="running_signal">Running signal: %1$d</string>
+    <string name="sum_alarm">Sum alarm: %1$d</string>
+    <string name="pressure">Pressure: %1$d</string>
+    <string name="current">Current: %1$d</string>
     <string name="bluetooth_settings">Bluetooth settings</string>
 </resources>

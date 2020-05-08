@@ -12,11 +12,11 @@
     <string name="show_readings_and_settings">Visa avläsningar och inställningar</string>
     <string name="send_settings">Skicka inställningar</string>
     <string name="get_readings">Hämta avläsningar</string>
-    <string name="setpoint">Börvärde</string>
-    <string name="start_signal">Startsignal</string>
-    <string name="running_signal">Driftsvar</string>
-    <string name="sum_alarm">Summalarm</string>
-    <string name="pressure">Tryck</string>
-    <string name="current">Ström</string>
+    <string name="setpoint">Börvärde: %1$d</string>
+    <string name="start_signal">Startsignal: %1$d</string>
+    <string name="running_signal">Driftsvar: %1$d</string>
+    <string name="sum_alarm">Summalarm: %1$d</string>
+    <string name="pressure">Tryck: %1$d</string>
+    <string name="current">Ström: %1$d</string>
     <string name="bluetooth_settings">Inställningar för bluetooth</string>
 </resources>
