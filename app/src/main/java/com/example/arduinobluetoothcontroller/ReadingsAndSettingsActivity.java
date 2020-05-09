@@ -2,10 +2,7 @@ package com.example.arduinobluetoothcontroller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,8 +13,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ReadingsAndSettingsActivity extends AppCompatActivity {
-
-    private static final int REQUEST_ENABLE_BT = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,46 +156,32 @@ public class ReadingsAndSettingsActivity extends AppCompatActivity {
     }
 
     ConnectThread getCommunicationChannel() {
-        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
-        BluetoothDevice device;
         ConnectThread connectionThread;
 
         // check if bluetooth is enabled
-        if (!adapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        if (!BluetoothUtilities.prerequisitesMet(this)) {
+            return null;
         }
 
         // get stored bluetooth device
-        SharedPreferences prefs = getSharedPreferences(
-                "ArduinoBluetoothController",
-                MODE_PRIVATE
-        );
+        BluetoothDevice device = BluetoothUtilities.getSavedDevice(this);
 
-        String macAddress = prefs.getString("MacAddress", null);
-
-        if (macAddress != null) {
-            device = adapter.getRemoteDevice(macAddress);
-            if (device != null) {
-                connectionThread = new ConnectThread(device);
+        if (device != null) {
+            connectionThread = new ConnectThread(device);
+            Log.d("getReadings", "connection thread state: " + connectionThread.getState());
+            connectionThread.start();
+            Log.d("getReadings", "connection thread state: " + connectionThread.getState());
+            try {
+                connectionThread.join(5000);
                 Log.d("getReadings", "connection thread state: " + connectionThread.getState());
-                connectionThread.start();
-                Log.d("getReadings", "connection thread state: " + connectionThread.getState());
-                try {
-                    connectionThread.join(5000);
-                    Log.d("getReadings", "connection thread state: " + connectionThread.getState());
-                    return connectionThread;
-                } catch (InterruptedException e) {
-                    Log.e("getReadings", "connection thread state: " + connectionThread.getState());
-                    e.printStackTrace();
-                }
-            } else {
-                Log.e("connection", "bluetooth device not found");
+                return connectionThread;
+            } catch (InterruptedException e) {
+                Log.e("getReadings", "connection thread state: " + connectionThread.getState());
+                e.printStackTrace();
             }
         } else {
-            Log.e("connection", "MAC address is null ");
+            Log.e("connection", "bluetooth device not found");
         }
-
         return null;
     }
 }

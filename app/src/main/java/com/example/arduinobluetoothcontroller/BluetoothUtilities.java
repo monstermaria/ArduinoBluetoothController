@@ -43,7 +43,10 @@ class BluetoothUtilities {
         BluetoothDevice device;
 
         // check if there is a saved device
-        SharedPreferences prefs = activity.getPreferences(MODE_PRIVATE);
+        SharedPreferences prefs = activity.getSharedPreferences(
+                "SavedDevice",
+                MODE_PRIVATE
+        );
 
         if (prefs == null) {
             Log.d("BT", "no preferences");

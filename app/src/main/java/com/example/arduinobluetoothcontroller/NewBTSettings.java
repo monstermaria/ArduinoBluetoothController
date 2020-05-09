@@ -112,7 +112,10 @@ public class NewBTSettings extends AppCompatActivity {
 
             // save chosen bluetooth device
             Log.d("paired", "saving chosen device to shared preferences");
-            SharedPreferences.Editor editor = getPreferences(MODE_PRIVATE).edit();
+            SharedPreferences.Editor editor = getSharedPreferences(
+                    "SavedDevice",
+                    MODE_PRIVATE
+            ).edit();
 
             editor.putString("MacAddress", device.getAddress());
             editor.apply();
