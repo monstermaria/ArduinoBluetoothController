@@ -18,4 +18,5 @@
     <string name="pressure">Pressure: %1$d</string>
     <string name="current">Current: %1$d</string>
     <string name="bluetooth_settings">Bluetooth settings</string>
+    <string name="list_of_paired_devices">List of paired devices</string>
 </resources>

@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openBluetoothSettings(View view) {
-        Intent intent = new Intent(this, BluetoothSettingsActivity.class);
+        Intent intent = new Intent(this, NewBTSettings.class);
         startActivity(intent);
     }
 }

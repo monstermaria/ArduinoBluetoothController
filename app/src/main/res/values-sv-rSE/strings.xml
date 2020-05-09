@@ -19,4 +19,5 @@
     <string name="pressure">Tryck: %1$d</string>
     <string name="current">Ström: %1$d</string>
     <string name="bluetooth_settings">Inställningar för bluetooth</string>
+    <string name="list_of_paired_devices">Lista över parade enheter</string>
 </resources>
